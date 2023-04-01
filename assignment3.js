@@ -34,3 +34,5 @@ function toNumber(input) {
 let input = ['a','b','c']
 console.log(countAandB(input))
 console.log(toNumber(input))
+
+// hello
