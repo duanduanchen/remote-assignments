@@ -1,0 +1,36 @@
+* {
+    max-width: 1200px;
+}
+
+.container1 {
+    display: flex;
+	flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.welcome {
+    text-align: center;
+    width: 100%;
+    background-color: lightblue;
+}
+
+.section {
+    text-align: center;
+    width: 100%;
+}
+
+.box4 {
+    display: grid;
+}
+
+.box {
+    text-align: center;
+    width: 30px;
+    background-color: lightgrey;
+}
+
+.action {
+    text-align: center;
+    width: 100px;
+    background-color: lightblue;
+}
