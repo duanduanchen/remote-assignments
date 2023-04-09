@@ -1,9 +1,9 @@
 function avg(data) {
-    let total_price = 0
+    let totalPrice = 0
     for (let i=0; i<data.products.length; i++) {
-        total_price += data.products[i].price
+        totalPrice += data.products[i].price
     }
-    return total_price / data.size
+    return totalPrice / data.size
 }
 
 console.log(
