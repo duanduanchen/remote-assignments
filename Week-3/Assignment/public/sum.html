@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>as3</title>
+    <link rel="stylesheet" href="sum.css">
+    <script>
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+        document.getElementById('number').innerHTML = xhr.responseText;
+        }
+    };
+    xhr.open('GET', '/data?number=10');
+    xhr.send()
+    </script>
+
+    <script>
+    function sendAjax() {
+        let n = document.querySelector("#selectnumber").value
+        var xhr1 = new XMLHttpRequest();
+        xhr1.onreadystatechange = function () {
+            if (xhr1.readyState === 4 && xhr1.status == 200) {
+            document.getElementById('second').innerHTML = xhr1.responseText;
+            }
+        };
+        xhr1.open('GET', `/data?number=${n}`);
+        xhr1.send()
+    }
+    </script>
+</head>
+
+<body>
+    <div>
+        <h1>What is the number?</h1>
+    </div>
+    <div id="number">
+
+    </div>
+    <div>
+        <h2>Enter a number</h2>
+    </div>
+    <form>
+        <label for="number1">Type A Number:</label><br>
+        <input type="text" id="selectnumber" name="selectnumber">
+        <button type='button' id='button' onclick="sendAjax()">Send</button>
+    </form>
+    <div id="second">
+
+    </div>
+</body>
+</html>
