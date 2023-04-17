@@ -21,7 +21,7 @@ app.get('/data', (req,res) => {
     if (!number) {
         res.send('Lack Of Parameter')
     }
-    else if (isNaN(number)) {
+    else if (isNaN(number) || number<0) {
         res.send('Wrong Parameter')
     } else {
         for (let i=0; i<=number; i++) {
