@@ -11,9 +11,9 @@ function ajax(src,callback) {
 }
 
 function render(data) {
-  const peopleList = document.getElementById('people');
+  const productList = document.getElementById('product');
   const section = document.createElement('section');
-  peopleList.appendChild(section);
+  productList.appendChild(section);
   for (let i=0; i<data.length; i++) {
     section.innerHTML += `
       <h2>${data[i].name}</h2>

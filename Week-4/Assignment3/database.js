@@ -9,12 +9,12 @@ const pool = mysql.createPool({
     database: process.env.MYSQL_DATABASE
 }).promise()
 
-export async function getNotes() {
+export async function getUsers() {
     const [rows] = await pool.query("SELECT * FROM user")
     return rows
 }
 
-export async function getNote(id) {
+export async function getUser(id) {
     const [rows] = await pool.query(`
     SELECT * 
     FROM user
@@ -23,8 +23,7 @@ export async function getNote(id) {
     return rows[0]
 }
 
-export async function createNote(email, password) {
-    console.log('createnote')
+export async function createUser(email, password) {
     const [result] = await pool.query(`
     INSERT INTO user (email, password)
     VALUES (?,?)
@@ -55,9 +54,8 @@ export async function signinCheck(mail,pass) {
 // const notes = await getNotes()
 // console.log(notes)
 
-const note = await getNote(1)
-console.log(note)
+// const note = await getNote(1)
+// console.log(note)
 
 // const result = await createNote('email4','email4Pass')
 // console.log(result)
-

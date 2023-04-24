@@ -2,10 +2,10 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 
-import { getNotes, getNote, createNote, signupCheck, signinCheck} from './database.js'
+import { getUsers, getUser, createUser, signupCheck, signinCheck} from './database.js'
 
 const app = express()
-const port = 3000
+const port = 3060
 app.set('view engine','pug')
 app.use(express.json());
 app.use(express.static('public'));
@@ -29,16 +29,11 @@ app.post("/homepage", async (req,res) => {
     const signin = await signinCheck(signinMail,signinPass)
     if (signin > 0) {   
         res.redirect("/welcome");
-        console.log('signin')
     } else if(signup === 0 && !(mail === undefined || mail === null || pass === undefined || pass === null)){  
-        console.log(mail)
-        console.log(pass) 
-        createNote(mail, pass);
+        createUser(mail, pass);
         res.redirect("/welcome");
-        console.log('signup')
     } else {
         res.send('oh no');
-        console.log('fuck')
     }
 })
 
@@ -47,17 +42,16 @@ app.get("/welcome", (req,res) => {
 });
 
 app.get("/",  async (req,res) => {
-    const notes = await getNotes()
+    const notes = await getUsers()
     res.send(notes)
 });
 
 app.post("/", async (req,res) => {
     const {email,password} = req.body
-    const note = await createNote(email,password)
+    const note = await createUser(email,password)
     res.send(note)
 })
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 });
-
