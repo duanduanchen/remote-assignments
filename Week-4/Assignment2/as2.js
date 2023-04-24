@@ -1,8 +1,8 @@
-function ajax(src,callback) {
+function ajax(src, callback) {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', src);
+  xhr.open("GET", src);
   xhr.onload = () => {
-    if(xhr.status === 200) {
+    if (xhr.status === 200) {
       let data = JSON.parse(xhr.responseText);
       return callback(data);
     }
@@ -11,21 +11,24 @@ function ajax(src,callback) {
 }
 
 function render(data) {
-  const productList = document.getElementById('product');
-  const section = document.createElement('section');
+  const productList = document.getElementById("product");
+  const section = document.createElement("section");
   productList.appendChild(section);
-  for (let i=0; i<data.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     section.innerHTML += `
       <h2>${data[i].name}</h2>
       <p>${data[i].price}</p>
       <p>${data[i].description}</p>
-  `};
+  `;
+  }
 }
 
-ajax('https://remote-assignment.s3.ap-northeast-1.amazonaws.com/products',
-function (response) {
-  render(response)
-})
+ajax(
+  "https://remote-assignment.s3.ap-northeast-1.amazonaws.com/products",
+  function (response) {
+    render(response);
+  }
+);
 
 // const astrosUrl = 'https://remote-assignment.s3.ap-northeast-1.amazonaws.com/products';
 // const peopleList = document.getElementById('people');
@@ -57,6 +60,3 @@ function (response) {
 // btn.addEventListener('click', () => {
 //   ajax(astrosUrl,render)
 // })
-
-
-
